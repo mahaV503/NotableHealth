@@ -1,7 +1,7 @@
 const app = require('express')();
 const http = require('http').Server(app);
 const io = require('socket.io')(http);
-
+var port = process.env.PORT || 3000;
 
 // Lets imagine that we have a database of doctors, now we can send the doctors list to the client through "http://notable-health.herokuapp.com/doctors"
 // and the client can send the doctor id to the server and the server can send the doctor details to the client
@@ -90,5 +90,9 @@ app.post('/doctors/:doctorsName/:day/:time', function(req, res){
         res.send({});
     }}}
 });
+
+app.listen(port, function(){
+    console.log('Server started on port: '+port);
+}   );
 
 
