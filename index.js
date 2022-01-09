@@ -1,6 +1,27 @@
 const app = require('express')();
-const http = require('http').Server(app);
-const io = require('socket.io')(http);
+const swaggerUi = require('swagger-ui-express');
+const swaggerDocument = require('./swagger.json');
+
+swaggerDocument.host = 'localhost:3000';
+swaggerDocument.basePath = '/';
+swaggerDocument.setup = {
+    info: {
+        title: 'Notable Health API',
+        description: 'API Documentation',
+        version: '1.0.0'
+    }
+};
+
+swaggerUi.setup(swaggerDocument);
+swaggerUi.generateHTML(swaggerDocument, (err, html) => {
+    if (err) {
+        console.log(err);
+    } else {
+        console.log(html);
+    }
+});
+
+
 var port = process.env.PORT || 3000;
 
 // Lets imagine that we have a database of doctors, now we can send the doctors list to the client through "http://notable-health.herokuapp.com/doctors"
