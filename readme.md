@@ -5,3 +5,5 @@ second request is to get all the appointements on that day can be done at /docto
 Third is to delete particualr appointement can be done at /doctors/:doctorsName/:day/:time
 
 Fourth is to add an appointment can be done at /doctors/:doctorsName/:day/:time
+
++Included Swagger documentation
